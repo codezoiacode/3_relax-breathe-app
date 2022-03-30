@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #1e443c url(./img/forest.jpeg) no-repeat center center/cover;
+  color: white;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden; /* to get rid og the scroll bar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto; /* to put everything in the middle */
+  height: 300px;
+  width: 300px;
+  position: relative; /* to position circles absolute to the container */
+  transform: scale (1); /* this is default value */
+}
+
+.circle {
+  background-color: #0b1c01;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.gradient-circle {
+  background: conic-gradient(
+    #a6c242 0%,
+    #a6c242 40%,
+    #dbf0b9 40%,
+    #dbf0b9 60%,
+    #5c6d33 60%,
+    #2a5b52 100%
+  );
+  height: 320px; /* 20px larger than an initial circle */
+  width: 320px;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: -2;
+}
+
+.pointer {
+  background-color: white;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: block; /* because <span> is inline by default */
+}
+
+.pointer-container {
+  position: absolute;
+  top: -40px;
+  left: 140px;
+  width: 20px; /* same as the pointer itself */
+  height: 190px; /* from the pointer to the middle of the circle, because we will add a rotate effect to it */
+  /* background: yellow;  */
+  animation: rotate 10s linear infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container.grow {
+  animation: grow 4s linear forwards;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.container.shrink {
+  animation: shrink 4s linear forwards;
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1.2);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
